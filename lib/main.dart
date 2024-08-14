@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todolist/core/theme/styles.dart';
-import 'injection_container.dart' as di;
+import 'package:todolist/features/core/router/app_router.dart';
+
+import 'core/theme/styles.dart';
+import 'injector.dart' as di;
 
 final GlobalKey<NavigatorState> globalKey = GlobalKey<NavigatorState>();
 
@@ -35,13 +37,9 @@ class _MyAppState extends State<MyApp> {
           theme: ThemeData(
             useMaterial3: true,
             scaffoldBackgroundColor: whiteColor,
-            appBarTheme: AppBarTheme(
-              backgroundColor:
-                  whiteColor, // Ubah warna app bar menjadi putih di sini
-            ),
           ),
           navigatorKey: widget.navigatorKey,
-          // onGenerateRoute: GetIt.instance<AppRouter>().onGenerateRoute,
+          onGenerateRoute: AppRouter.onGenerateRoute,
         );
       },
     );
